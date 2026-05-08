@@ -1,6 +1,6 @@
 {
-  "name": "CurrículoPronto",
-  "description": "Gerador de currículos profissional com visualização em tempo real e exportação para PDF.",
+  "name": "CurrículoPronto | Gerador de Currículo PDF",
+  "description": "Crie seu currículo profissional online gratuitamente com visualização em tempo real e exportação para PDF otimizada.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }
