@@ -3,8 +3,6 @@ import { Download, FileText } from 'lucide-react';
 import { CVForm } from './components/CVForm';
 import { CVPreview } from './components/CVPreview';
 import type { CVData } from './types';
-import { pdf } from '@react-pdf/renderer';
-import { CVPDF } from './components/CVPDF';
 import { saveAs } from 'file-saver';
 
 const initialData: CVData = {
@@ -53,7 +51,11 @@ export default function App() {
       console.log('Passo 2: Aguardando sincronização de estado (100ms)...');
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      console.log('Passo 3: Criando componente CVPDF...');
+      console.log('Passo 3: Importando e criando componente CVPDF dinamicamente...');
+      // Lazy load react-pdf and CVPDF to reduce initial bundle size
+      const { pdf } = await import('@react-pdf/renderer');
+      const { CVPDF } = await import('./components/CVPDF');
+
       const doc = <CVPDF data={cvData} />;
       
       console.log('Passo 4: Gerando Blob a partir do componente react-pdf... (Isso pode demorar um pouco se houver imagens grandes)');
