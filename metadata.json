@@ -1,0 +1,6 @@
+{
+  "name": "CurrículoPronto",
+  "description": "Gerador de currículos profissional com visualização em tempo real e exportação para PDF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
