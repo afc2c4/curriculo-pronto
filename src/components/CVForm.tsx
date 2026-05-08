@@ -17,7 +17,7 @@ const Section = ({ title, icon: Icon, children }: { title: string; icon: any; ch
   >
     <div className="flex items-center gap-2 border-b border-slate-100 pb-3 mb-2">
       <Icon className="w-5 h-5 text-blue-600" />
-      <h3 className="text-xs font-bold text-blue-600 uppercase tracking-widest">{title}</h3>
+      <h2 className="text-xs font-bold text-blue-600 uppercase tracking-widest">{title}</h2>
     </div>
     {children}
   </motion.div>
@@ -122,7 +122,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
             
             <div className="mt-8 w-full max-w-md bg-white rounded-2xl p-6 flex flex-col gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Aproximar (Zoom)</label>
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Aproximar (Zoom)</label>
                 <input 
                   type="range"
                   min={1}
@@ -170,12 +170,14 @@ export function CVForm({ data, onChange }: CVFormProps) {
                     }}
                   />
                 ) : (
-                  <Camera className="w-8 h-8 text-slate-300" />
+                  <Camera className="w-8 h-8 text-slate-400" />
                 )}
               </div>
-              <label className="absolute inset-0 flex items-center justify-center bg-slate-900/40 opacity-0 group-hover:opacity-100 rounded-full cursor-pointer transition-opacity backdrop-blur-[2px]">
+              <label htmlFor="input-photo" className="absolute inset-0 flex items-center justify-center bg-slate-900/40 opacity-0 group-hover:opacity-100 rounded-full cursor-pointer transition-opacity backdrop-blur-[2px]">
                 <Plus className="w-6 h-6 text-white" />
+                <span className="sr-only">Upload de foto</span>
                 <input 
+                  id="input-photo"
                   type="file" 
                   className="hidden" 
                   accept="image/*,.jpg,.jpeg,.png,.webp,.svg,.bmp,.gif" 
@@ -193,7 +195,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
             </div>
             <div className="flex-1">
               <h4 className="text-sm font-bold text-slate-800">Foto de Perfil</h4>
-              <p className="text-xs text-slate-400 mt-1">Carregue uma foto em formato profissional. Clique na foto para alterar.</p>
+              <p className="text-xs text-slate-500 mt-1">Carregue uma foto em formato profissional. Clique na foto para alterar.</p>
               {data.photo && (
                 <button 
                   onClick={() => setTempPhoto(data.photo!)}
@@ -207,10 +209,11 @@ export function CVForm({ data, onChange }: CVFormProps) {
 
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Nome Completo</label>
+              <label htmlFor="input-name" className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Nome Completo</label>
               <input 
+                id="input-name"
                 type="text"
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-slate-300"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-slate-400"
                 value={data.fullName}
                 onChange={(e) => updateData({ fullName: e.target.value })}
                 placeholder="Ex: Carlos Eduardo Silva"
@@ -218,8 +221,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">WhatsApp / Celular</label>
+                <label htmlFor="input-phone" className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">WhatsApp / Celular</label>
                 <input 
+                  id="input-phone"
                   type="text"
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all"
                   value={data.phone}
@@ -228,8 +232,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
                 />
               </div>
               <div>
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">E-mail</label>
+                <label htmlFor="input-email" className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">E-mail</label>
                 <input 
+                  id="input-email"
                   type="email"
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all"
                   value={data.email}
@@ -240,8 +245,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
             </div>
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Bairro</label>
+                <label htmlFor="input-neighborhood" className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Bairro</label>
                 <input 
+                  id="input-neighborhood"
                   type="text"
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all"
                   value={data.address.neighborhood}
@@ -249,8 +255,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
                 />
               </div>
               <div>
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Cidade</label>
+                <label htmlFor="input-city" className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Cidade</label>
                 <input 
+                  id="input-city"
                   type="text"
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all"
                   value={data.address.city}
@@ -258,11 +265,12 @@ export function CVForm({ data, onChange }: CVFormProps) {
                 />
               </div>
               <div>
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Estado (Sigla)</label>
+                <label htmlFor="input-state" className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Estado (Sigla)</label>
                 <input 
+                  id="input-state"
                   type="text"
                   maxLength={2}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all uppercase placeholder:text-slate-300"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all uppercase placeholder:text-slate-400"
                   value={data.address.state}
                   onChange={(e) => updateAddress({ state: e.target.value })}
                   placeholder="UF"
@@ -276,7 +284,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
       {/* Objetivo */}
       <Section title="Objetivo Profissional" icon={MapPin}>
         <div>
+          <label htmlFor="input-objective" className="sr-only">Objetivo Profissional</label>
           <textarea 
+            id="input-objective"
             className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm focus:ring-1 focus:ring-blue-500 outline-none transition-all min-h-[100px] resize-none"
             value={data.objective}
             onChange={(e) => updateData({ objective: e.target.value })}
@@ -299,15 +309,16 @@ export function CVForm({ data, onChange }: CVFormProps) {
               >
                 <button 
                   onClick={() => removeItem('experience', exp.id)}
-                  className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-red-500 bg-white border border-slate-200 rounded transition-colors"
+                  className="absolute top-4 right-4 p-1.5 text-slate-500 hover:text-red-500 bg-white border border-slate-200 rounded transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
                 <div className="grid grid-cols-1 gap-4 pr-10">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Cargo</label>
+                      <label htmlFor={`exp-role-${exp.id}`} className="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Cargo</label>
                       <input 
+                        id={`exp-role-${exp.id}`}
                         type="text"
                         className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded text-xs"
                         value={exp.role}
@@ -315,8 +326,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Empresa</label>
+                      <label htmlFor={`exp-company-${exp.id}`} className="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Empresa</label>
                       <input 
+                        id={`exp-company-${exp.id}`}
                         type="text"
                         className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded text-xs"
                         value={exp.company}
@@ -325,8 +337,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
                     </div>
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Período</label>
+                    <label htmlFor={`exp-period-${exp.id}`} className="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Período</label>
                     <input 
+                      id={`exp-period-${exp.id}`}
                       type="text"
                       className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded text-xs"
                       value={exp.period}
@@ -335,8 +348,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Descrição das Atividades</label>
+                    <label htmlFor={`exp-desc-${exp.id}`} className="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Descrição das Atividades</label>
                     <textarea 
+                      id={`exp-desc-${exp.id}`}
                       className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded text-xs min-h-[80px] resize-none"
                       value={exp.description}
                       onChange={(e) => updateListItem('experience', exp.id, { description: e.target.value })}
@@ -348,7 +362,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
           </AnimatePresence>
           <button 
             onClick={() => addItem('experience', { id: crypto.randomUUID(), role: '', company: '', period: '', description: '' })}
-            className="flex items-center justify-center gap-2 py-2 border-2 border-dashed border-slate-200 rounded text-slate-400 hover:border-blue-300 hover:text-blue-600 transition-all group"
+            className="flex items-center justify-center gap-2 py-2 border-2 border-dashed border-slate-200 rounded text-slate-500 hover:border-blue-300 hover:text-blue-600 transition-all group"
           >
             <Plus className="w-4 h-4 group-hover:scale-110 transition-transform" />
             <span className="text-xs font-bold uppercase tracking-wider">Adicionar Experiência</span>
@@ -370,14 +384,15 @@ export function CVForm({ data, onChange }: CVFormProps) {
               >
                 <button 
                   onClick={() => removeItem('education', edu.id)}
-                  className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-red-500 bg-white border border-slate-200 rounded transition-colors"
+                  className="absolute top-4 right-4 p-1.5 text-slate-500 hover:text-red-500 bg-white border border-slate-200 rounded transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
                 <div className="grid grid-cols-1 gap-4 pr-10">
                   <div>
-                    <label className="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Curso / Formação</label>
+                    <label htmlFor={`edu-degree-${edu.id}`} className="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Curso / Formação</label>
                     <input 
+                      id={`edu-degree-${edu.id}`}
                       type="text"
                       className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded text-xs"
                       value={edu.degree}
@@ -386,8 +401,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Instituição</label>
+                      <label htmlFor={`edu-inst-${edu.id}`} className="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Instituição</label>
                       <input 
+                        id={`edu-inst-${edu.id}`}
                         type="text"
                         className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded text-xs"
                         value={edu.institution}
@@ -395,8 +411,9 @@ export function CVForm({ data, onChange }: CVFormProps) {
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Período</label>
+                      <label htmlFor={`edu-period-${edu.id}`} className="text-[10px] font-bold text-slate-500 uppercase mb-1 block">Período</label>
                       <input 
+                        id={`edu-period-${edu.id}`}
                         type="text"
                         className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded text-xs"
                         value={edu.period}
@@ -410,7 +427,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
           </AnimatePresence>
           <button 
             onClick={() => addItem('education', { id: crypto.randomUUID(), degree: '', institution: '', period: '' })}
-            className="flex items-center justify-center gap-2 py-2 border-2 border-dashed border-slate-200 rounded text-slate-400 hover:border-blue-300 hover:text-blue-600 transition-all font-bold uppercase"
+            className="flex items-center justify-center gap-2 py-2 border-2 border-dashed border-slate-200 rounded text-slate-500 hover:border-blue-300 hover:text-blue-600 transition-all font-bold uppercase"
           >
             <Plus className="w-4 h-4" />
             <span className="text-xs tracking-wider">Adicionar Formação</span>
@@ -431,6 +448,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
               >
                 <input 
                   type="text"
+                  aria-label="Habilidade"
                   className="bg-transparent text-[10px] font-bold text-slate-700 outline-none w-24"
                   value={skill}
                   onChange={(e) => updateSimpleItem('skills', index, e.target.value)}
@@ -438,7 +456,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
                 />
                 <button 
                   onClick={() => removeSimpleItem('skills', index)}
-                  className="p-1 text-slate-400 hover:text-red-500 transition-colors"
+                  className="p-1 text-slate-500 hover:text-red-500 transition-colors"
                 >
                   <X className="w-3 h-3" />
                 </button>
@@ -447,7 +465,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
           </AnimatePresence>
           <button 
             onClick={() => addSimpleItem('skills')}
-            className="px-3 py-1 border border-dashed border-slate-300 rounded text-[10px] font-bold text-slate-400 hover:border-blue-400 hover:text-blue-500 transition-all flex items-center gap-1"
+            className="px-3 py-1 border border-dashed border-slate-300 rounded text-[10px] font-bold text-slate-500 hover:border-blue-400 hover:text-blue-500 transition-all flex items-center gap-1"
           >
             <Plus className="w-3 h-3" /> NOVO
           </button>
@@ -467,6 +485,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
               >
                 <input 
                   type="text"
+                  aria-label="Formação Complementar"
                   className="flex-1 bg-transparent text-xs font-medium text-slate-700 outline-none"
                   value={comp}
                   onChange={(e) => updateSimpleItem('complementary', index, e.target.value)}
@@ -474,7 +493,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
                 />
                 <button 
                   onClick={() => removeSimpleItem('complementary', index)}
-                  className="text-slate-300 hover:text-red-500 transition-colors"
+                  className="text-slate-400 hover:text-red-500 transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
@@ -483,7 +502,7 @@ export function CVForm({ data, onChange }: CVFormProps) {
           </AnimatePresence>
           <button 
             onClick={() => addSimpleItem('complementary')}
-            className="py-2 border-2 border-dashed border-slate-200 rounded text-slate-400 hover:border-blue-300 hover:text-blue-500 transition-all flex items-center justify-center gap-2"
+            className="py-2 border-2 border-dashed border-slate-200 rounded text-slate-500 hover:border-blue-300 hover:text-blue-500 transition-all flex items-center justify-center gap-2"
           >
             <Plus className="w-3.5 h-3.5" />
             <span className="text-[10px] font-bold uppercase tracking-widest">Adicionar Item</span>

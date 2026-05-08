@@ -109,7 +109,7 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="hidden md:block text-[10px] text-slate-400 font-bold uppercase tracking-widest">Preview Instantâneo</span>
+          <span className="hidden md:block text-[10px] text-slate-500 font-bold uppercase tracking-widest">Preview Instantâneo</span>
           <button
             onClick={downloadPDF}
             disabled={isGenerating}
